@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200&family=Poppins:ital,wght@0,200;1,200&family=Raleway:wght@100;300&display=swap');
+
+body{
+    font-family: 'Raleway', sans-serif;
+    margin-top: 120px;
+}
+
+
+.card-img-top{
+    width: 300px;
+    height: 300px;
+    transition: 0.5s;
+}
+
+.card-img-top:hover{
+    transform:scale(1.1);
+    transition: 0.5s;
+}
+

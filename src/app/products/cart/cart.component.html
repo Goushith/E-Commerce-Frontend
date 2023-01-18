@@ -1,0 +1,119 @@
+
+<div class="container border border-primary m-5 p-5" *ngIf="cartitems.length==0">
+<div class="row">
+    <div class="col">
+        <img src="https://semisearch.in/site-assets/images/no-cart.gif" width="40%" alt=""> <button class="btn btn-primary mt-2">Shop now</button>
+        <h3 class="mt-5">Your Cart is Empty</h3>
+    </div>
+</div>
+
+</div>
+
+
+
+
+
+<div class="container" *ngIf="cartitems.length!=0">
+    <div class="row">
+        <div class="col">
+            <table class="table border border-dark m-5">
+                <thead>
+                    <tr>
+                        <th>Number</th>
+                        <th>Name</th>
+                        <th>Image</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <tr *ngFor="let product of cartitems let i=index">
+                    <th>{{i+1}}</th>
+                    <th>{{product.title}}</th>
+                    <th><img [src]="product.image" width="100" alt=""></th>
+                    <th>{{product.description}}</th>
+                    <th>{{product.price}}</th>
+                    <td><i (click)="removeitem(product)" class="fa fa-trash text-danger"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="float: right;" class="mb-3">
+                <button (click)="removeall()" class="btn btn-danger">Empty-Cart</button> &nbsp;
+                <button routerLink="/" class="btn btn-warning">View-more</button>&nbsp;
+                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Checkout</button>&nbsp;
+                <b>Grand Total : &#x20b9;{{grand}}</b>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Delivery Address</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+
+
+        <div class="modal-body p-3 m-3 ">
+          <form action="" class=" p-3 m-3 border border-primary">
+          <input type="text" class="form-control"   placeholder="Name"><br>
+          <input type="textarea" class="form-control"   placeholder="Address House No"><br>
+          <input type="number" class="form-control"   placeholder="Pincode"><br>
+          <input type="email" class="form-control"   placeholder="State"><br>
+          <input type="email" class="form-control"   placeholder="country"><br>
+          <input type="number" class="form-control"   placeholder="Contact no"><br>
+          <input type="email" class="form-control"   placeholder="Email Address"><br>
+        </form>
+<div [ngSwitch]="grand">
+        <h4>Discounts</h4>
+        <img *ngSwitchCase="3" (click)="discount3per($event.target)"  src="https://tse4.mm.bing.net/th?id=OIP.R2E1zdFBAFGYk7NQ8V2FtAHaHa&pid=Api&P=0" width="100" alt="">
+        <img *ngSwitchCase="10" (click)="discount10per()"  src="https://tse1.mm.bing.net/th?id=OIP.ari4av8isuy6_LloLytqTAHaHa&pid=Api&P=0" width="100" alt="">
+        <img *ngSwitchCase="30" (click)="discount30per()"   src="https://tse4.mm.bing.net/th?id=OIP.AJPw72dJDr9_zOAdRDeeYQHaHa&pid=Api&P=0" width="100" alt="">
+        <img *ngSwitchCase="50" (click)="discount50per()"   src="https://tse1.mm.bing.net/th?id=OIP.T18wcsvG6-UPYA369IncGwHaHD&pid=Api&P=0" width="100" alt="">
+        <img *ngSwitchDefault="3" (click)="discount3per($event.target)"  src="https://tse4.mm.bing.net/th?id=OIP.R2E1zdFBAFGYk7NQ8V2FtAHaHa&pid=Api&P=0" width="100" alt="">
+      </div>
+
+      <div>
+        <h5>Your Grand Total is here : {{updatetotal}}</h5>
+      </div>
+    </div>
+
+    
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#exampleModal"  data-bs-dismiss="modal">Proceed</button>
+          <!-- <button type="button" class="btn btn-primary" >
+            Launch demo modal
+          </button> -->
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <!-- <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1> -->
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to Proceed ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" (click)="proceed()"  class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
