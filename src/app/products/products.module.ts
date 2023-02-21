@@ -8,6 +8,7 @@ import { CartComponent } from './cart/cart.component';
 import { WishListComponent } from './wish-list/wish-list.component';
 import{HttpClientModule} from '@angular/common/http';
 import { FilterPipe } from './pipes/filter.pipe';
+import { NgConfirmModule } from 'ng-confirm-box';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FilterPipe } from './pipes/filter.pipe';
   imports: [
     CommonModule,
     ProductsRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgConfirmModule
   ]
 })
 export class ProductsModule { }

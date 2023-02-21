@@ -31,6 +31,7 @@ export class AllProductsComponent implements OnInit {
 
 
   addtowishlist(product:any){
+    
     this.api.addtowishlist(product).subscribe(
     (result:any)=>{
       alert(result.message)
@@ -40,6 +41,7 @@ export class AllProductsComponent implements OnInit {
     })
     }
 
+    
 
 addcart(product:any){
   this.cart.addcart(product)
